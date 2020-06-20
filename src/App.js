@@ -7,6 +7,7 @@ import {
   Typography,
   MuiThemeProvider,
 } from "@material-ui/core";
+import InstaFollow from "./InstaFollow";
 
 //here we are not customization anything other than font size which should be responseive ...so we are not passing anything
 let theme = createMuiTheme();
@@ -31,6 +32,7 @@ function App() {
           {text}
         </Typography>
       </MuiThemeProvider>
+      <InstaFollow />
     </div>
   );
 }
