@@ -1,13 +1,20 @@
 import React from "react";
 import { Tabs, Tab, Paper } from "@material-ui/core";
+//category is current selceted category
+const Footer = ({ muscles, onSelect, category }) => {
+  const index = category
+    ? muscles.findIndex((group) => group === category) + 1
+    : 0;
 
-const Footer = ({ muscles }) => {
+  const onIndexSelect = (e, index) =>
+    onSelect(index === 0 ? "" : muscles[index - 1]);
+
   return (
     <React.Fragment>
       <Paper>
         <Tabs
-          value={0}
-          //   onChange={handleChange}
+          value={index}
+          onChange={onIndexSelect}
           indicatorColor="primary"
           textColor="primary"
           centered
