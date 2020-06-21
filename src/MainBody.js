@@ -8,7 +8,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
-const MainBody = ({ excercies }) => {
+const MainBody = ({ excercies, category }) => {
   const style = {
     paper: {
       marginTop: 10,
@@ -24,21 +24,23 @@ const MainBody = ({ excercies }) => {
       <Grid container>
         <Grid item xs>
           <Paper style={style.paper}>
-            {excercies.map(([group, exercises]) => (
-              <React.Fragment>
-                <Typography
-                  variant="h6"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {group}
-                </Typography>
-                <List component="ul">
-                  {exercises.map(({ title }) => (
-                    <ListItemText primary={title} />
-                  ))}
-                </List>
-              </React.Fragment>
-            ))}
+            {excercies.map(([group, exercises]) =>
+              !category || category === group ? (
+                <React.Fragment>
+                  <Typography
+                    variant="h6"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {group}
+                  </Typography>
+                  <List component="ul">
+                    {exercises.map(({ title }) => (
+                      <ListItemText primary={title} />
+                    ))}
+                  </List>
+                </React.Fragment>
+              ) : null
+            )}
           </Paper>
         </Grid>
         <Grid item xs>

@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
-        <MainBody excercies={excercies} />
+        <MainBody excercies={excercies} category={category} />
         <Footer
           muscles={muscles}
           category={category}
