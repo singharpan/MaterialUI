@@ -9,17 +9,27 @@ class App extends Component {
   state = {
     excercises,
   };
-
+  //Object.entries convert Object into Array
   getExcercisesbyMuscles() {
-    return this.state.excercises;
+    return Object.entries(
+      this.state.excercises.reduce((exercises, excercise) => {
+        const { muscles } = excercise;
+        exercises[muscles] = exercises[muscles]
+          ? [...exercises[muscles], excercise]
+          : [excercise];
+
+        return exercises;
+      }, {})
+    );
   }
 
   render() {
     console.log(this.getExcercisesbyMuscles());
+    const excercies = this.getExcercisesbyMuscles();
     return (
       <React.Fragment>
         <Header />
-        <MainBody />
+        <MainBody excercies={excercies} />
         <Footer muscles={muscles} />
       </React.Fragment>
     );
