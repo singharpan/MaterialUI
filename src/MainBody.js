@@ -44,10 +44,9 @@ const MainBody = ({
                   </Typography>
                   <List component="ul">
                     {exercises.map(({ id, title }) => (
-                      <ListItemText
-                        primary={title}
-                        onClick={() => onSelect(id)}
-                      />
+                      <ListItem key={id} button onClick={() => onSelect(id)}>
+                        <ListItemText primary={title} />
+                      </ListItem>
                     ))}
                   </List>
                 </React.Fragment>
