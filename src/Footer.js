@@ -12,6 +12,7 @@ const Footer = ({ muscles }) => {
           textColor="primary"
           centered
         >
+          <Tab label="All" />
           {muscles.map((group) => (
             <Tab label={group} />
           ))}

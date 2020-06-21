@@ -9,7 +9,13 @@ class App extends Component {
   state = {
     excercises,
   };
+
+  getExcercisesbyMuscles() {
+    return this.state.excercises;
+  }
+
   render() {
+    console.log(this.getExcercisesbyMuscles());
     return (
       <React.Fragment>
         <Header />
