@@ -8,7 +8,16 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
-const MainBody = ({ excercies, category }) => {
+const MainBody = ({
+  excercies,
+  category,
+  onSelect,
+  exercise: {
+    id,
+    title = "Welcome !",
+    description = "Please Select the Excercise from the list on the left...",
+  },
+}) => {
   const style = {
     paper: {
       marginTop: 10,
@@ -34,8 +43,11 @@ const MainBody = ({ excercies, category }) => {
                     {group}
                   </Typography>
                   <List component="ul">
-                    {exercises.map(({ title }) => (
-                      <ListItemText primary={title} />
+                    {exercises.map(({ id, title }) => (
+                      <ListItemText
+                        primary={title}
+                        onClick={() => onSelect(id)}
+                      />
                     ))}
                   </List>
                 </React.Fragment>
@@ -45,11 +57,10 @@ const MainBody = ({ excercies, category }) => {
         </Grid>
         <Grid item xs>
           <Paper style={style.paper}>
-            <Typography variant="h5">Welcome !</Typography>
+            <Typography variant="h5">{title}</Typography>
             <Typography variant="h4" style={{ marginTop: 20 }}>
-              Please Select the Excercise from the list on the left...
+              {description}
             </Typography>
-            <Typography variant="h5">Welcome !</Typography>
           </Paper>
         </Grid>
       </Grid>

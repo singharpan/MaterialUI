@@ -8,7 +8,7 @@ import { muscles, excercises } from "./store/store";
 class App extends Component {
   state = {
     excercises,
-    category: "legs",
+    exercise: {},
   };
   //Object.entries convert Object into Array
   getExcercisesbyMuscles() {
@@ -29,14 +29,27 @@ class App extends Component {
       category,
     });
   };
+  handleExerciseSelected = (id) => {
+    console.log(id);
+    this.setState(({ excercises }) => ({
+      exercise: excercises.find((ex) => ex.id === id),
+    }));
+  };
   render() {
     console.log(this.getExcercisesbyMuscles());
     const excercies = this.getExcercisesbyMuscles(),
-      { category } = this.state;
+      { category, exercise } = this.state;
+
+    //excercise is currently selected excercise
     return (
       <React.Fragment>
         <Header />
-        <MainBody excercies={excercies} category={category} />
+        <MainBody
+          exercise={exercise}
+          excercies={excercies}
+          category={category}
+          onSelect={this.handleExerciseSelected}
+        />
         <Footer
           muscles={muscles}
           category={category}
