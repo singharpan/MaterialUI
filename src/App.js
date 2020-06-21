@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import MainBody from "./MainBody";
 import { muscles, excercises } from "./store/store";
+import Dialogs from "./Dialogs/dialogs";
 
 class App extends Component {
   state = {
@@ -50,6 +51,7 @@ class App extends Component {
           category={category}
           onSelect={this.handleExerciseSelected}
         />
+
         <Footer
           muscles={muscles}
           category={category}
